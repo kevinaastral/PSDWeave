@@ -1,0 +1,5 @@
+{
+  "schema": "psd2ugui.scoring/1.0",
+  "bindThreshold": 0.6,
+  "reviewThreshold": 0.6
+}

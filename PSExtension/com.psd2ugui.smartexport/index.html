@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PSD2UGUI Smart Export</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Module Selection -->
+    <div class="section">
+        <div class="section-title">模块 (Module)</div>
+        <div class="module-row">
+            <select id="moduleSelect"></select>
+            <button class="btn-icon" id="btnAddModule" title="添加模块">+</button>
+            <button class="btn-icon" id="btnRemoveModule" title="删除当前模块">−</button>
+        </div>
+    </div>
+
+    <!-- Document Info -->
+    <div class="section" id="docInfoSection" style="display:none;">
+        <div class="section-title">当前文档</div>
+        <div id="docInfo" style="font-size:11px; color:#999;"></div>
+    </div>
+
+    <!-- Settings -->
+    <div class="section">
+        <div class="section-title">设置</div>
+        <div class="checkbox-row">
+            <input type="checkbox" id="cbRenameGeneric" checked>
+            <label for="cbRenameGeneric">只重命名 PS 默认名（保留自定义名）</label>
+        </div>
+        <div class="checkbox-row">
+            <input type="checkbox" id="cbMarkDup" checked>
+            <label for="cbMarkDup">重复图片标记 @ref:（自动复用）</label>
+        </div>
+        <div class="setting-label">图片导出模式</div>
+        <div class="segmented-control" id="imageRenderMode">
+            <input type="radio" id="imageModePs" name="imageRenderMode" value="ps_visual" checked>
+            <label for="imageModePs">PS 视觉优先</label>
+            <input type="radio" id="imageModeUnity" name="imageRenderMode" value="unity_editable">
+            <label for="imageModeUnity">Unity 可编辑</label>
+        </div>
+        <div class="setting-hint">只影响图片。PS 模式会烘焙图片特效、蒙版和透明边缘。</div>
+        <div class="checkbox-row">
+            <input type="checkbox" id="cbSkipHidden" checked>
+            <label for="cbSkipHidden">跳过隐藏图层</label>
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="section action-group">
+        <button class="btn-full btn-primary" id="btnBoth">智能命名 + 导出 PSD</button>
+        <button class="btn-full" id="btnExport">只导出 PSD（不改原PSD）</button>
+        <button class="btn-full" id="btnRename">只智能命名（可撤销）</button>
+        <button class="btn-full btn-success" id="btnPreview">预览分类结果</button>
+    </div>
+
+    <!-- Status -->
+    <div class="status-bar" id="statusBar">就绪</div>
+
+    <!-- Results -->
+    <div class="section results" id="resultsSection">
+        <div class="section-title">结果</div>
+        <div class="results-grid" id="resultsGrid"></div>
+        <div class="results-total" id="resultsTotal"></div>
+        <div class="results-errors" id="resultsErrors" style="display:none;"></div>
+    </div>
+
+    <!-- Add Module Modal -->
+    <div class="modal-overlay" id="addModuleModal">
+        <div class="modal">
+            <h3>添加模块</h3>
+            <input type="text" id="newModuleId" placeholder="模块ID (英文小写，如: shop)">
+            <input type="text" id="newModuleName" placeholder="显示名 (如: 商店)">
+            <div class="modal-actions">
+                <button id="modalCancel">取消</button>
+                <button class="btn-primary" id="modalConfirm">添加</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">PSD2UGUI Smart Export v4.4.5</div>
+
+    <script src="js/CSInterface.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "schema": "psd2ugui.naming/1.0",
+  "dictOverrides": {
+    "锁": "lock",
+    "好感度": "good_opinion_duo",
+    "开始游戏": "start",
+    "关闭按钮": "close",
+    "返回按钮": "back",
+    "确认按钮": "confirm",
+    "取消按钮": "cancel",
+    "奖励列表": "reward_list",
+    "道具列表": "item_list",
+    "角色列表": "role_list",
+    "体力进度": "stamina",
+    "经验进度": "exp",
+    "血量进度": "hp"
+  }
+}

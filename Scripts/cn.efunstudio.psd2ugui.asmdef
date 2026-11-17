@@ -1,0 +1,17 @@
+{
+    "name": "cn.efunstudio.psd2ugui",
+    "rootNamespace": "",
+    "references": [
+        "Unity.TextMeshPro",
+        "cn.efunstudio.psdreader"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
