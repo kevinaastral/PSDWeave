@@ -88,6 +88,16 @@ namespace UGF.EditorTools.Psd2UGUI
                 return string.Empty;
             }
 
+            if (assetPath.StartsWith("Packages/", StringComparison.Ordinal))
+            {
+                var package = UnityEditor.PackageManager.PackageInfo.FindForAssetPath(assetPath);
+                if (package != null)
+                {
+                    string relativePath = assetPath.Substring(package.assetPath.Length).TrimStart('/');
+                    return Path.Combine(package.resolvedPath, relativePath.Replace('/', Path.DirectorySeparatorChar));
+                }
+            }
+
             string projectRoot = GetProjectRoot();
             if (string.IsNullOrWhiteSpace(projectRoot))
             {

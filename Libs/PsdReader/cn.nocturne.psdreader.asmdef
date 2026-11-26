@@ -1,7 +1,9 @@
 {
     "name": "cn.efunstudio.psdreader",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "UnityEngine.UI"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

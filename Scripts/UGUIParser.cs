@@ -3873,6 +3873,21 @@ namespace UGF.EditorTools.Psd2UGUI
             }
 
             var newContent = configPattern.Replace(scriptContent, builder.ToString(), 1);
+            if (layerTagMenuScriptAssetPath.StartsWith("Packages/", StringComparison.Ordinal))
+            {
+                string outputPath = EditorUtility.SaveFilePanel(
+                    "导出 Photoshop 图层标签脚本",
+                    Psd2UIFormPluginPathUtility.GetProjectRoot(),
+                    Path.GetFileNameWithoutExtension(layerTagMenuScriptAssetPath),
+                    "jsx");
+                if (!string.IsNullOrEmpty(outputPath))
+                {
+                    File.WriteAllText(outputPath, newContent, Encoding.UTF8);
+                    EditorUtility.RevealInFinder(outputPath);
+                }
+                return;
+            }
+
             File.WriteAllText(layerTagMenuScriptAbsolutePath, newContent, Encoding.UTF8);
             AssetDatabase.ImportAsset(layerTagMenuScriptAssetPath);
             EditorUtility.DisplayDialog("导出Rules成功", layerTagMenuScriptAssetPath, "OK");

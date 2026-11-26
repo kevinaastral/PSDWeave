@@ -4,6 +4,7 @@
     "references": [
         "cn.efunstudio.psdreader",
         "cn.efunstudio.psd2ugui",
+        "UnityEngine.UI",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],

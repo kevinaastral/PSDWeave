@@ -2,6 +2,7 @@
     "name": "cn.efunstudio.psd2ugui",
     "rootNamespace": "",
     "references": [
+        "UnityEngine.UI",
         "Unity.TextMeshPro",
         "cn.efunstudio.psdreader"
     ],

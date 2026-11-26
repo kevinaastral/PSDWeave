@@ -45,22 +45,6 @@ namespace UGF.EditorTools.Psd2UGUI
             return Path.Combine(projectRoot, relativePath);
         }
 
-        internal static string ToAbsolutePluginPath(string projectRoot, string pluginRelativePath)
-        {
-            if (string.IsNullOrWhiteSpace(pluginRelativePath))
-            {
-                return string.Empty;
-            }
-
-            string pluginRootAssetPath = GetPluginRootAssetPath();
-            if (string.IsNullOrWhiteSpace(pluginRootAssetPath))
-            {
-                return string.Empty;
-            }
-
-            return ToAbsoluteProjectPath(projectRoot, CombineAssetRelative(pluginRootAssetPath, pluginRelativePath));
-        }
-
         internal static string ToPluginDisplayPath(string pluginRelativePath)
         {
             if (string.IsNullOrWhiteSpace(pluginRelativePath))
@@ -95,26 +79,6 @@ namespace UGF.EditorTools.Psd2UGUI
 
             string safeName = new string(chars).Trim();
             return string.IsNullOrWhiteSpace(safeName) ? "psd" : safeName;
-        }
-
-        internal static string GetPluginRootAssetPath()
-        {
-            return Psd2UIFormPluginPathUtility.GetPluginRootAssetPath();
-        }
-
-        private static string CombineAssetRelative(string left, string right)
-        {
-            if (string.IsNullOrWhiteSpace(left))
-            {
-                return right ?? string.Empty;
-            }
-
-            if (string.IsNullOrWhiteSpace(right))
-            {
-                return left ?? string.Empty;
-            }
-
-            return left.TrimEnd('/', '\\') + "/" + right.Replace("\\", "/").TrimStart('/');
         }
     }
 }

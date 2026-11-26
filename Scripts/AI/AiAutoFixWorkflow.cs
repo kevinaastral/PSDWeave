@@ -443,7 +443,7 @@ namespace UGF.EditorTools.Psd2UGUI
                 previewHash = string.Empty
             };
             AiJobFileUtility.WriteJson(context.MetaPath, meta);
-                AiJobFileUtility.AppendDebugLog(context, $"Workflow prepared. provider={provider.ProviderId}, projectRoot={projectRoot}, recognitionPrompt={ResolveCombinedRecognitionPromptTemplatePath(projectRoot)}");
+            AiJobFileUtility.AppendDebugLog(context, $"Workflow prepared. provider={provider.ProviderId}, projectRoot={projectRoot}, recognitionPrompt={ResolveCombinedRecognitionPromptTemplatePath()}");
             JobManager.StartJob(context, provider, new Listener(converter), (jobContext, cancellationToken) =>
             {
                 ExecuteAiWorkflow(jobContext, provider, projectRoot, cancellationToken);
@@ -525,7 +525,7 @@ namespace UGF.EditorTools.Psd2UGUI
             {
                 return false;
             }
-            AiJobFileUtility.AppendDebugLog(context, $"Blocking workflow prepared. provider={provider.ProviderId}, projectRoot={projectRoot}, recognitionPrompt={ResolveCombinedRecognitionPromptTemplatePath(projectRoot)}");
+            AiJobFileUtility.AppendDebugLog(context, $"Blocking workflow prepared. provider={provider.ProviderId}, projectRoot={projectRoot}, recognitionPrompt={ResolveCombinedRecognitionPromptTemplatePath()}");
 
             DateTime startUtc = DateTime.UtcNow;
             try
@@ -603,19 +603,19 @@ namespace UGF.EditorTools.Psd2UGUI
             };
         }
 
-        private static string ResolveCombinedRecognitionPromptTemplatePath(string projectRoot)
+        private static string ResolveCombinedRecognitionPromptTemplatePath()
         {
-            return AiPathDefaults.ToAbsolutePluginPath(projectRoot, AiPathDefaults.CombinedRecognitionPromptTemplateRelative);
+            return Psd2UIFormPluginPathUtility.GetPluginAbsolutePath(AiPathDefaults.CombinedRecognitionPromptTemplateRelative);
         }
 
-        private static string ResolveMainTypePromptTemplatePath(string projectRoot)
+        private static string ResolveMainTypePromptTemplatePath()
         {
-            return AiPathDefaults.ToAbsolutePluginPath(projectRoot, AiPathDefaults.MainTypePromptTemplateRelative);
+            return Psd2UIFormPluginPathUtility.GetPluginAbsolutePath(AiPathDefaults.MainTypePromptTemplateRelative);
         }
 
-        private static string ResolveChildRelationPromptTemplatePath(string projectRoot)
+        private static string ResolveChildRelationPromptTemplatePath()
         {
-            return AiPathDefaults.ToAbsolutePluginPath(projectRoot, AiPathDefaults.ChildRelationPromptTemplateRelative);
+            return Psd2UIFormPluginPathUtility.GetPluginAbsolutePath(AiPathDefaults.ChildRelationPromptTemplateRelative);
         }
 
         private static string ResolveCombinedRecognitionPromptPath(AiJobContext context)
@@ -936,7 +936,7 @@ namespace UGF.EditorTools.Psd2UGUI
         private static void WriteRenderedCombinedRecognitionPrompt(AiJobContext context, string projectRoot)
         {
             WriteRenderedPrompt(
-                ResolveCombinedRecognitionPromptTemplatePath(projectRoot),
+                ResolveCombinedRecognitionPromptTemplatePath(),
                 ResolveCombinedRecognitionPromptPath(context),
                 BuildCommonPromptTags(
                     context,
@@ -947,7 +947,7 @@ namespace UGF.EditorTools.Psd2UGUI
         private static void WriteRenderedMainTypePrompt(AiJobContext context, string projectRoot)
         {
             WriteRenderedPrompt(
-                ResolveMainTypePromptTemplatePath(projectRoot),
+                ResolveMainTypePromptTemplatePath(),
                 ResolveMainTypePromptPath(context),
                 BuildCommonPromptTags(
                     context,
@@ -958,7 +958,7 @@ namespace UGF.EditorTools.Psd2UGUI
         private static void WriteRenderedChildRelationPrompt(AiJobContext context, string projectRoot)
         {
             WriteRenderedPrompt(
-                ResolveChildRelationPromptTemplatePath(projectRoot),
+                ResolveChildRelationPromptTemplatePath(),
                 ResolveChildRelationPromptPath(context),
                 BuildCommonPromptTags(
                     context,

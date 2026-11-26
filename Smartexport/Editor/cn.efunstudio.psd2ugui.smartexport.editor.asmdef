@@ -1,0 +1,11 @@
+{
+    "name": "cn.efunstudio.psd2ugui.smartexport.editor",
+    "references": [
+        "cn.efunstudio.psd2ugui",
+        "UnityEngine.UI",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ]
+}
